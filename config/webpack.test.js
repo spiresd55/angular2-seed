@@ -13,7 +13,7 @@ module.exports = {
             // instrument only testing sources with Istanbul
             {
                 test: /\.(js|ts)$/,
-                include: path.resolve('src/components/'),
+                include: path.resolve('src'),
                 loader: 'istanbul-instrumenter',
                 exclude: [
                     /\.(e2e|spec)\.ts$/,
