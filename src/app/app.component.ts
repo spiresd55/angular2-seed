@@ -9,6 +9,6 @@ import '../../public/css/styles.scss';
 
 export class AppComponent {
     testFunction() {
-        return true; 
+        return false;
     }
 }
