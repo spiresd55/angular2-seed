@@ -11,7 +11,8 @@ module.exports = function (config) {
         ],
 
         preprocessors: {
-            './config/karma-test-shim.js': ['webpack', 'sourcemap']
+            './config/karma-test-shim.js': ['webpack', 'sourcemap'],
+            './src/**/!(*.spec).js': ['coverage'],
         },
 
         webpack: webpackConfig,
@@ -24,7 +25,30 @@ module.exports = function (config) {
             noInfo: true
         },
 
-        reporters: ['progress'],
+        coverageReporter: {
+            dir: 'reports/coverage',
+            check: {
+                global: {
+                    statements: 100,
+                    branches: 100,
+                    functions: 100,
+                    lines: 100
+                }
+            },
+            reporters: [
+                {
+                    type: 'lcov', subdir: 'report-client-lcov'
+                },
+                {
+                    type: 'json', subdir: 'report-client-lcov'
+                },
+                {
+                    type: 'text'
+                }
+            ]
+        },
+
+        reporters: ['progress', 'coverage'],
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,
