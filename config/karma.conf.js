@@ -12,7 +12,7 @@ module.exports = function (config) {
 
         preprocessors: {
             './config/karma-test-shim.js': ['webpack', 'sourcemap'],
-            './src/**/!(*.spec).js': ['coverage'],
+            './src/main.ts': ['coverage']
         },
 
         webpack: webpackConfig,
@@ -24,9 +24,9 @@ module.exports = function (config) {
         webpackServer: {
             noInfo: true
         },
-
+        
         coverageReporter: {
-            dir: 'reports/coverage',
+            /*dir: 'reports/coverage',
             check: {
                 global: {
                     statements: 100,
@@ -45,10 +45,19 @@ module.exports = function (config) {
                 {
                     type: 'text'
                 }
-            ]
+            ]*/
+            type: 'in-memory'
         },
 
-        reporters: ['progress', 'coverage'],
+//        plugins: ['karma-coverage', 'karma-remap-coverage'],
+
+        remapCoverageReporter: {
+            'text-summary': null, // to show summary in console
+            html: './coverage/html',
+            cobertura: './coverage/cobertura.xml'
+        },
+
+        reporters: ['progress', 'coverage', 'remap-coverage'],
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,
