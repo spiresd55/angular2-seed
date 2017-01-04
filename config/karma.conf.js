@@ -11,8 +11,7 @@ module.exports = function (config) {
         ],
 
         preprocessors: {
-            './config/karma-test-shim.js': ['webpack', 'sourcemap'],
-            './src/main.ts': ['coverage']
+            './config/karma-test-shim.js': ['coverage', 'webpack', 'sourcemap']
         },
 
         webpack: webpackConfig,
@@ -24,7 +23,7 @@ module.exports = function (config) {
         webpackServer: {
             noInfo: true
         },
-        
+
         coverageReporter: {
             /*dir: 'reports/coverage',
             check: {

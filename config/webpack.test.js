@@ -9,6 +9,18 @@ module.exports = {
     },
 
     module: {
+        postLoaders: [
+            // instrument only testing sources with Istanbul
+            {
+                test: /\.(js|ts)$/,
+                include: path.resolve('src/components/'),
+                loader: 'istanbul-instrumenter',
+                exclude: [
+                    /\.(e2e|spec)\.ts$/,
+                    /node_modules/
+                ]
+            }
+        ],
         loaders: [
             {
                 test: /\.ts$/,
