@@ -7,4 +7,8 @@ import '../../public/css/styles.scss';
     styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent { }
+export class AppComponent {
+    testFunction() {
+        return true; 
+    }
+}
