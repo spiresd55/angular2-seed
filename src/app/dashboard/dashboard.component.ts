@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
 })
 
 export class DashboardComponent {
+    displayData: string = "Welcome to the dashboard";
 
+    getDisplayData(): string {
+        return this.displayData;
+    }
 }
