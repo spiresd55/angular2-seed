@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { DashboardComponent } from './dashboard.component';
 import { async } from '@angular/core/testing';
 
-describe('App', () => {
+describe('Dashboard Component Specs', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({ declarations: [DashboardComponent]})
             .compileComponents();
@@ -12,8 +12,6 @@ describe('App', () => {
 
         let comp = fixture.componentInstance;
         expect(comp instanceof DashboardComponent).toBe(true, 'should create DashboardComponent');
-        console.log('HERE IS THE COMPONENT');
-        console.log(comp);
-        console.log(comp.getDisplayData());
+        expect(comp.getDisplayData()).toBeDefined();
     });
 });
