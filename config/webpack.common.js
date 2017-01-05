@@ -11,11 +11,52 @@ module.exports = {
         'app': './src/main.ts'
     },
 
+    tslint: {
+        failOnHint: true,
+        emitErrors: true,
+        configuration: {
+            rules: {
+                'no-empty-interface': true,
+                curly: true,
+                'no-duplicate-variable': true,
+                'no-unused-variable': true,
+                'no-use-before-declare': true,
+                'no-var-keyword': true,
+                'triple-equals': true,
+                'eofline': true,
+                'max-line-length': 100,
+                'no-trailing-whitespace': true,
+                'trailing-comma': 'never',
+                'arrow-parens': true,
+                'class-name': true,
+                'no-consecutive-blank-lines': true,
+                'quotemark': 'single',
+                'semicolon': true,
+                "whitespace": [
+                    true,
+                    "check-branch",
+                    "check-operator",
+                    "check-typecast",
+                    "check-decl",
+                    "check-module",
+                    "check-seperator",
+                    "check-type"
+                ]
+            }
+        }
+    },
+    
     resolve: {
         extensions: ['', '.ts', '.js']
     },
 
     module: {
+        preLoaders: [
+            {
+                test: /\.ts$/,
+                loader: 'tslint-loader'
+            }
+        ],
         loaders: [
             {
                 test: /\.ts$/,
